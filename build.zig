@@ -10,7 +10,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     lib.linkLibC();
-    lib.addIncludePath("include");
+    lib.addIncludePath(.{ .path = "include" });
     lib.addCSourceFiles(&sources, &.{"-fno-sanitize=undefined"});
     lib.installHeadersDirectory("include/ogg", "ogg");
     b.installArtifact(lib);
