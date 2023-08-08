@@ -10,3 +10,4 @@ git diff $(git merge-base master upstream/master)..master \
     ':(exclude)verify.sh' \
     ':(exclude).github' \
     ':(exclude).gitignore'
+    ':(exclude)include/ogg/config_types.h' # TODO: remove this
