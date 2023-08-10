@@ -18,4 +18,4 @@ If nothing is printed, there is no diff. Deleted files, and changes to `README.m
 
 ## Issues
 
-Issues are tracked in the [main Mach repository](https://github.com/hexops/mach/issues?q=is%3Aissue+is%3Aopen+label%3Astandalone).
+Issues are tracked in the [main Mach repository](https://github.com/hexops/mach/issues?q=is%3Aissue+is%3Aopen+label%3Aogg).
