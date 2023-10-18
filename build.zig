@@ -6,8 +6,8 @@ pub fn build(b: *std.Build) void {
 
     const config_header = b.addConfigHeader(
         .{
-            .style = .{ .cmake = .{ .path = sdkPath("/include/ogg/config_types.h.in") } },
-            .include_path = sdkPath("/ogg/config_types.h"),
+            .style = .{ .cmake = .{ .path = "include/ogg/config_types.h.in" } },
+            .include_path = "ogg/config_types.h",
         },
         .{
             .INCLUDE_INTTYPES_H = 0,
@@ -47,11 +47,3 @@ const sources = [_][]const u8{
     "src/bitwise.c",
     "src/framing.c",
 };
-
-fn sdkPath(comptime suffix: []const u8) []const u8 {
-    if (suffix[0] != '/') @compileError("suffix must be an absolute path");
-    return comptime blk: {
-        const root_dir = std.fs.path.dirname(@src().file) orelse ".";
-        break :blk root_dir ++ suffix;
-    };
-}
