@@ -30,7 +30,7 @@ pub fn build(b: *std.Build) void {
     lib.linkLibC();
     lib.addConfigHeader(config_header);
     lib.addIncludePath(.{ .path = "include" });
-    lib.addCSourceFiles(&sources, &.{"-fno-sanitize=undefined"});
+    lib.addCSourceFiles(.{ .files = &sources, .flags = &.{"-fno-sanitize=undefined"} });
     lib.installHeadersDirectoryOptions(.{
         .source_dir = .{ .path = "include/ogg" },
         .install_dir = .header,

@@ -1,6 +1,13 @@
 .{
     .name = "ogg",
     .version = "0.0.0",
-    .dependencies = .{
+    .paths = .{
+        "src",
+        "build.zig",
+        "build.zig.zon",
+        "COPYING",
+        "README.md",
+        "update.sh",
+        "verify.sh",
     },
 }
