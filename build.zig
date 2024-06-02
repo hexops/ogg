@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) void {
 
     const config_header = b.addConfigHeader(
         .{
-            .style = .{ .cmake = .{ .path = "include/ogg/config_types.h.in" } },
+            .style = .{ .cmake = b.path("include/ogg/config_types.h.in") },
             .include_path = "ogg/config_types.h",
         },
         .{
@@ -29,17 +29,12 @@ pub fn build(b: *std.Build) void {
     });
     lib.linkLibC();
     lib.addConfigHeader(config_header);
-    lib.addIncludePath(.{ .path = "include" });
+    lib.addIncludePath(b.path("include"));
     lib.addCSourceFiles(.{ .files = &sources, .flags = &.{"-fno-sanitize=undefined"} });
-    lib.installHeadersDirectoryOptions(.{
-        .source_dir = .{ .path = "include/ogg" },
-        .install_dir = .header,
-        .install_subdir = "ogg",
+    lib.installHeadersDirectory(b.path("include/ogg"), "ogg", .{
         .exclude_extensions = &.{".in"},
     });
-    lib.installConfigHeader(config_header, .{
-        .dest_rel_path = "ogg/config_types.h",
-    });
+    lib.installConfigHeader(config_header);
     b.installArtifact(lib);
 }
 
